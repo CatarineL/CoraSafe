@@ -2,6 +2,7 @@ import 'package:cora_safe/screens/cadastroSelecaoTipoUsuario.dart';
 import 'package:cora_safe/screens/exemplomenu.dart';
 import 'package:cora_safe/screens/formularioUser.dart';
 import 'package:cora_safe/screens/menuPrincipal.dart';
+import 'package:cora_safe/screens/perfil.dart';
 import 'package:cora_safe/screens/restricao.dart';
 import 'package:cora_safe/screens/tela_logincads.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //const Color coralBackground = Color(0xFFFAECE7);
     return MaterialApp(
       title: 'Projeto CoraSafe',
       debugShowCheckedModeBanner: false,
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: LoginCadastro()//CadastroSelecaoTipoUsuario()//MenuPrincipal(),//Restricao()//FormularioUser(),//CadastroSelecaoTipoUsuario(),//LoginScreen()//LoginCadastro(),//chamando a tela de login a principio
+      home: LoginCadastro(), //perfilUser()//CadastroSelecaoTipoUsuario()//MenuPrincipal(),//Restricao()//FormularioUser(),//CadastroSelecaoTipoUsuario(),//LoginScreen()//LoginCadastro(),//chamando a tela de login a principio
     );
   }
 }

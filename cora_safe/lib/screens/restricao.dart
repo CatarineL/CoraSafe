@@ -32,8 +32,10 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Restrição alimentar')),
-      body: Column(
-        children: <Widget>[
+      body: Container(
+        padding: EdgeInsets.all(12),
+        child: Column(
+          children: [
           CheckboxListTile(
             value: checkboxValue1,
             onChanged: (bool? value) {
@@ -125,7 +127,9 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
               child: const Text("Continuar"),
             ),
           ),
+          //const SizedBox(height: 12),
         ],
+      ),
       ),
     );
   }

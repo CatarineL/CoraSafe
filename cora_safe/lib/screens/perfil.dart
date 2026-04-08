@@ -1,5 +1,9 @@
+import 'package:cora_safe/screens/acessibilidade.dart';
+import 'package:cora_safe/screens/ajuda.dart';
+import 'package:cora_safe/screens/preferencias.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cora_safe/screens/seguranca.dart';
+import 'package:cora_safe/screens/meusDados.dart';
 
 class perfilUser extends StatelessWidget {
   perfilUser({super.key});
@@ -7,34 +11,131 @@ class perfilUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Perfil")),
-      body: Center(
-       // child: Text("Você chegou aqui!"),
-        // Página Dispensa
-        child: const Padding(
-        padding: EdgeInsets.all(8.0),
+      appBar: AppBar(
+        title: Text("Perfil",
+        style: TextStyle(color: Colors.white, fontSize: 18)),
+        backgroundColor: Colors.redAccent[400],
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(24),
         child: Column(
-          children: <Widget>[
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.notifications_sharp),
-                title: Text('Notificação 1'),
-                subtitle: Text('This is a notification'),
-              ),
+          children: [
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            //   child: TextFormField(
+            //     decoration: const InputDecoration(
+            //       border: UnderlineInputBorder(),
+            //       labelText: 'Nome completo:',
+            //     ),
+            //   ),
+            // ),
+
+            //pagina de meus dados
+            ListTile(
+              //leading: const Icon(Icons.account_circle),
+              title: const Text('Meus Dados'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => meusDados(),
+                  ),
+                );
+
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.notifications_sharp),
-                title: Text('Notificação 2'),
-                subtitle: Text('This is a notification'),
-              ),
+            Divider(),
+            //segurança
+            ListTile(
+              //leading: const Icon(Icons.account_circle),
+              title: const Text('Segurança'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => seguranca(),
+                  ),
+                );
+
+              },
             ),
+            Divider(),
+            //preferencias
+            ListTile(
+              //leading: const Icon(Icons.account_circle),
+              title: const Text('Preferências'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => preferencias(),
+                  ),
+                );
+
+              },
+            ),
+            Divider(),
+            //acessibilidade
+            ListTile(
+              //leading: const Icon(Icons.account_circle),
+              title: const Text('Acessibilidade'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => acessibilidade(),
+                  ),
+                );
+
+              },
+            ),
+            Divider(),
+            //ajuda
+            ListTile(
+              //leading: const Icon(Icons.account_circle),
+              title: const Text('Ajuda'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Ajuda(),
+                  ),
+                );
+
+              },
+            ),
+            Divider(),
+            //sair - botão
+            ListTile(
+              //leading: const Icon(Icons.account_circle),
+              title: const Text('Sair'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => meusDados(),
+                  ),
+                );
+
+              },
+            ),
+            Spacer(),
+             Padding(
+               padding: const EdgeInsets.only(bottom: 16),
+               child: Center(
+                 child: Text(
+                   '©CoraSafe',
+                   style: TextStyle(color: Colors.grey, fontSize: 13),
+                 ),
+               ),
+            ),
+
+            const SizedBox(height: 24),
+
           ],
         ),
       ),
-    ),
-
     );
-
   }
 }
