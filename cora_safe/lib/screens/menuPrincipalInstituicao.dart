@@ -1,4 +1,5 @@
 import 'package:cora_safe/screens/ajuda.dart';
+import 'package:cora_safe/screens/dispensa.dart';
 import 'package:cora_safe/screens/doacoes.dart';
 import 'package:cora_safe/screens/medicamentos.dart';
 import 'package:cora_safe/screens/paineleconomia.dart';
@@ -11,10 +12,10 @@ import 'package:flutter/material.dart';
 
 /// Flutter code sample for [Drawer].
 
-void main() => runApp(const MenuPrincipal());
+void main() => runApp(const MenuPrincipalInstituicao());
 
-class MenuPrincipal extends StatelessWidget {
-  const MenuPrincipal({super.key});
+class MenuPrincipalInstituicao extends StatelessWidget {
+  const MenuPrincipalInstituicao({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,34 +99,19 @@ class _DrawerExampleState extends State<DrawerExample> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.volunteer_activism),
-              title: const Text('Doações'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Doacoes(),
-                  ),
-                );
-                setState(() {
-                  selectedPage = 'Doações';
-                });
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.eco),
-              title: const Text('Raízes e Asas'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => raizesEasas(),
-                  ),
-                );
-                setState(() {
-                  selectedPage = 'Raízes e Asas';
-                });
-              },
+               leading: const Icon(Icons.volunteer_activism),
+               title: const Text('Doações'),
+               onTap: () {
+                 Navigator.push(
+                   context,
+                   MaterialPageRoute(
+                     builder: (context) => Doacoes(),
+                   ),
+                 );
+                 setState(() {
+                   selectedPage = 'Doações';
+                 });
+               },
             ),
             ListTile(
               leading: const Icon(Icons.dashboard),
@@ -194,8 +180,8 @@ class _DrawerExampleState extends State<DrawerExample> {
             label: 'Dispensa',
           ),
           NavigationDestination(
-            icon: Icon(Icons.notifications_sharp),
-            label: 'Notificações',
+            icon: Icon(Icons.person),
+            label: 'Perfil',
           )
         ],
       ),
@@ -238,101 +224,101 @@ class _DrawerExampleState extends State<DrawerExample> {
                 ),
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Medicamentos(),
-                    ),
-                  );
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/pills.png',
-                      height: 50,
-                    ),
-                    const SizedBox(height: 8),
-                    const Text('Incluir Medicamentos', style: TextStyle(color: Colors.black)),
-                  ],
-                )
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Medicamentos(),
+                      ),
+                    );
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/pills.png',
+                        height: 50,
+                      ),
+                      const SizedBox(height: 8),
+                      const Text('Incluir Medicamentos', style: TextStyle(color: Colors.black)),
+                    ],
+                  )
                 //child: const Text('Adicionar Medicamentos'),
 
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => pratoDia(),
-                    ),
-                  );
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/garfo-e-faca-de-prato.png',
-                      height: 60,
-                    ),
-                    const SizedBox(height: 8),
-                    const Text('Prato do Dia', style: TextStyle(color: Colors.black)),
-                  ],
-                )
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => pratoDia(),
+                      ),
+                    );
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/garfo-e-faca-de-prato.png',
+                        height: 60,
+                      ),
+                      const SizedBox(height: 8),
+                      const Text('Prato do Dia', style: TextStyle(color: Colors.black)),
+                    ],
+                  )
                 //child: const Text('Prato do Dia'),
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Doacoes(),
-                    ),
-                  );
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/doacao-de-alimentos.png',
-                      height: 60,
-                    ),
-                    const SizedBox(height: 8),
-                    const Text('Doações', style: TextStyle(color: Colors.black)),
-                  ],
-                )
-                //child: const Text('Doações'),
+               ElevatedButton(
+                 style: ElevatedButton.styleFrom(
+                   shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(20),
+                   ),
+                 ),
+                 onPressed: () {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => Doacoes(),
+                     ),
+                   );
+                 },
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Image.asset(
+                       'assets/images/doacao-de-alimentos.png',
+                       height: 60,
+                     ),
+                     const SizedBox(height: 8),
+                     const Text('Doações', style: TextStyle(color: Colors.black)),
+                   ],
+                 )
+                 //child: const Text('Doações'),
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Paineleconomia(),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                  );
-                },
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Paineleconomia(),
+                      ),
+                    );
+                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -351,29 +337,21 @@ class _DrawerExampleState extends State<DrawerExample> {
         ),
 
         // Página Dispensa
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.notifications_sharp),
-                  title: Text('Notificação 1'),
-                  subtitle: Text('This is a notification'),
-                ),
+        ListTile(
+          //leading: const Icon(Icons.account_circle),
+          title: const Text('Produtos'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Produtos(),//dispensa(),
               ),
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.notifications_sharp),
-                  title: Text('Notificação 2'),
-                  subtitle: Text('This is a notification'),
-                ),
-              ),
-            ],
-          ),
+            );
+
+          },
         ),
 
-        //pagina de notificações
+        //pagina de perfil
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
@@ -398,25 +376,25 @@ class _DrawerExampleState extends State<DrawerExample> {
 
         // Página de perfil do usuario
         //ListView.builder(
-          //reverse: true,
-          //itemCount: 2,
-          //itemBuilder: (BuildContext context, int index) {
-            //if (index == 0) {
-              //return Align(
-                //alignment: Alignment.centerRight,
-                //child: Container(
-                  //margin: const EdgeInsets.all(8.0),
-                  //padding: const EdgeInsets.all(8.0),
-                  //decoration: BoxDecoration(
-                    //color: theme.colorScheme.primary,
-                    //borderRadius: BorderRadius.circular(8.0),
-                  //),
-                  //child: Text(
-                    //'Hello',
-                    //style: theme.textTheme.bodyLarge!.copyWith(
-                      //color: theme.colorScheme.onPrimary,
-                    //),
-                  //),
+        //reverse: true,
+        //itemCount: 2,
+        //itemBuilder: (BuildContext context, int index) {
+        //if (index == 0) {
+        //return Align(
+        //alignment: Alignment.centerRight,
+        //child: Container(
+        //margin: const EdgeInsets.all(8.0),
+        //padding: const EdgeInsets.all(8.0),
+        //decoration: BoxDecoration(
+        //color: theme.colorScheme.primary,
+        //borderRadius: BorderRadius.circular(8.0),
+        //),
+        //child: Text(
+        //'Hello',
+        //style: theme.textTheme.bodyLarge!.copyWith(
+        //color: theme.colorScheme.onPrimary,
+        //),
+        //),
         //         ),
         //       );
         //     }
@@ -453,6 +431,6 @@ class _DrawerExampleState extends State<DrawerExample> {
         // ),
       ][currentPageIndex],
 
-      );
+    );
   }
 }

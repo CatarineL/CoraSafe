@@ -3,7 +3,7 @@ import 'package:cora_safe/screens/ajuda.dart';
 import 'package:cora_safe/screens/preferencias.dart';
 import 'package:flutter/material.dart';
 import 'package:cora_safe/screens/seguranca.dart';
-import 'package:cora_safe/screens/meusDados.dart';
+import 'package:cora_safe/screens/meusDadosUserPrincipal.dart';
 
 class perfilUser extends StatelessWidget {
   perfilUser({super.key});

@@ -1,4 +1,7 @@
+import 'package:cora_safe/screens/abrirCamera.dart';
+import 'package:cora_safe/screens/visualizarDispensaUserComum.dart';
 import 'package:flutter/material.dart';
+import 'package:cora_safe/screens/itensValidadeProximaUserComum.dart';
 
 
 class Produtos extends StatelessWidget {
@@ -39,13 +42,8 @@ class Produtos extends StatelessWidget {
               width: double.infinity,
               height: 70,
               child: ElevatedButton.icon(
-                onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => proximapagina(),
-                  //   ),
-                  // );
+                onPressed: () async {
+                  await abrirCamera();
                 },
                 label: Text("Ler Item", style: TextStyle(fontWeight: FontWeight.bold)),
                 icon: Icon(Icons.document_scanner_sharp, size: 25,),
@@ -67,12 +65,12 @@ class Produtos extends StatelessWidget {
               height: 75,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => proximapagina(),
-                  //   ),
-                  // );
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => visualizacaoDispensaUserComum(),
+                     ),
+                   );
                 },
                 icon: const Icon(Icons.shopping_cart_outlined),
                 label: Text("Visualizar dispensa virtual", style: TextStyle(fontWeight: FontWeight.bold)),
@@ -94,12 +92,12 @@ class Produtos extends StatelessWidget {
               height: 75,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => proximapagina(),
-                  //   ),
-                  // );
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) =>  itensValidadeProximaUserComum(),
+                     ),
+                   );
                 },
                 icon: const Icon(Icons.calendar_month),
                 label: Text("Validades Próximas",style: TextStyle(fontWeight: FontWeight.bold)),

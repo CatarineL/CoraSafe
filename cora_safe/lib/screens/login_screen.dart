@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'menuPrincipal.dart';
+import 'menuPrincipalInstituicao.dart';
+import 'menuPrincipalUserComum.dart';
+import 'menuPrincipalUserResponsavel.dart';
 
 
 class LoginScreen extends StatelessWidget {
@@ -29,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         //FlutterLogo(size: 76),
                         Image.asset(
-                          'assets/images/CoraSafe_logo.png',
+                          'assets/images/CoraSafe_logo_removido.png',
                           width: 300,
                           height: 300,
                         ),
@@ -60,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MenuPrincipal(),
+                                  builder: (context) => MenuPrincipalInstituicao(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
                                 ),
                               );
                             },
@@ -99,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                           style: TextButton.styleFrom(
                             foregroundColor: Colors.black
                           ),
-                          child: Text("Ainda não tem uma conta, crie uma conta"),
+                          child: Text("Ainda não tem uma conta, crie agora"),
                         )
                       ]
                   ),

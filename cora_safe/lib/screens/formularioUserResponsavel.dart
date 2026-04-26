@@ -1,9 +1,11 @@
 import 'package:cora_safe/screens/restricao.dart';
 import 'package:flutter/material.dart';
 
+import 'criarSenha.dart';
 
-class FormularioUser extends StatelessWidget {
-  FormularioUser({super.key});
+
+class FormularioUserResponsavel extends StatelessWidget {
+  FormularioUserResponsavel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,55 +97,11 @@ class FormularioUser extends StatelessWidget {
               child: TextFormField(
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
-                  labelText: 'E-mail de familiar:',
+                  labelText: 'Telefone:',
                 ),
               ),
             ),
-            Row(
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-
-
-                Expanded(
-                  child: Text(
-                    "Restrição alimentar:",
-                    //style: TextStyle(fontSize: 18),//fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-
-                // sim
-                Row(
-                  children: [
-                    const Text("Sim"),
-                    Radio<String>(
-                      value: "sim",
-                      //groupValue: escolha,
-                      onChanged: (value) {
-                        //setState(() => escolha = value);
-                      },
-                    ),
-                  ],
-                ),
-
-                // não
-                Row(
-                  children: [
-                    const Text("Não"),
-                    Radio<String>(
-                      value: "não",
-                      //groupValue: escolha,
-                      onChanged: (value) {
-                        //setState(() => escolha = value);
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 80,
-            ),
+            Spacer(),
             SizedBox(
               width: double.infinity,
               height: 55,
@@ -152,7 +110,7 @@ class FormularioUser extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Restricao(),
+                      builder: (context) => criarSenha(),
                     ),
                   );
                 },
@@ -169,9 +127,9 @@ class FormularioUser extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-        ],
+          ],
         ),
       ),
-  );
+    );
   }
 }

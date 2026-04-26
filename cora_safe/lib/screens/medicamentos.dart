@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'abrirCamera.dart';
+
 
 class Medicamentos extends StatelessWidget {
   Medicamentos({super.key});
@@ -39,13 +41,8 @@ class Medicamentos extends StatelessWidget {
                 width: double.infinity,
                 height: 70,
                 child: ElevatedButton.icon(
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => proximapagina(),
-                    //   ),
-                    // );
+                  onPressed: () async {
+                    await abrirCamera();
                   },
                   label: Text("Ler Medicamento", style: TextStyle(fontWeight: FontWeight.bold)),
                   icon: Icon(Icons.document_scanner_sharp, size: 25,),

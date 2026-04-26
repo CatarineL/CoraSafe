@@ -27,7 +27,7 @@ class LoginCadastro extends StatelessWidget {
                       children: [
                         //FlutterLogo(size: 76),
                         Image.asset(
-                          'assets/images/CoraSafe_logo.png',
+                          'assets/images/CoraSafe_logo_removido.png',
                           width: 300,
                           height: 300,
                         ),

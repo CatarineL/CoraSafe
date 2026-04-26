@@ -1,5 +1,8 @@
+import 'formularioUserResponsavel.dart';
+import 'formularioUserComum.dart';
+import 'formularioUserInstituicao.dart';
 import 'package:flutter/material.dart';
-import 'formularioUser.dart';
+
 
 class CadastroSelecaoTipoUsuario extends StatelessWidget {
   CadastroSelecaoTipoUsuario({super.key});
@@ -11,68 +14,24 @@ class CadastroSelecaoTipoUsuario extends StatelessWidget {
     return Scaffold(
         body: Padding(
             padding: const EdgeInsets.all(24),
-            child: Column(
+            child: Center(
+              child: Column(
               children: [
 
-                const SizedBox(height: 280),
+                SizedBox(height: 220),
 
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-
-
-                    Expanded(
-                      child: Text(
-                        "Instituição/Asilo",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-
-                    // sim
-                    Row(
-                      children: [
-                        const Text("Sim"),
-                        Radio<String>(
-                          value: "sim",
-                          //groupValue: escolha,
-                          onChanged: (value) {
-                            //setState(() => escolha = value);
-                          },
-                        ),
-                      ],
-                    ),
-
-                    // não
-                    Row(
-                      children: [
-                        const Text("Não"),
-                        Radio<String>(
-                          value: "nao",
-                          //groupValue: escolha,
-                          onChanged: (value) {
-                            //setState(() => escolha = value);
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-
-
-                const Spacer(),
-
+                //pessoa 60+
                 SizedBox(
-                  width: double.infinity,
+                  width: 250,
                   height: 55,
                   child: ElevatedButton(
                     onPressed:(){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FormularioUser(),
-                          ),
-                        );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FormularioUser(),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.redAccent[400],
@@ -81,12 +40,64 @@ class CadastroSelecaoTipoUsuario extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: const Text("Continuar"),
+                    child: const Text("Pessoa 60+"),
                   ),
                 ),
 
-                const SizedBox(height: 24),
+                SizedBox(height: 20,),
+
+                //pessoa responsavel
+                SizedBox(
+                  width:250,
+                  height: 55,
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FormularioUserResponsavel(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent[400],
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text("Sou Responsável por Alguém"),
+                  ),
+                ),
+
+                SizedBox(height: 20,),
+
+                //pessoa responsavel
+                SizedBox(
+                  width: 250,
+                  height: 55,
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FormularioUserInstituicao(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent[400],
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text("Represento uma Instituição"),
+                  ),
+                ),
+
               ],
+            ),
             ),
           ),
         );
