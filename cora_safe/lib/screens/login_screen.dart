@@ -1,15 +1,16 @@
+import 'package:cora_safe/classes/Usuario.dart';
 import 'package:flutter/material.dart';
-
 import 'menuPrincipalInstituicao.dart';
 import 'menuPrincipalUserComum.dart';
 import 'menuPrincipalUserResponsavel.dart';
+//import 'package:cora_safe/classes/Usuario.dart'
 
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _senhaController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,9 @@ class LoginScreen extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MenuPrincipalInstituicao(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
+                                  //chamada da função
+                                  //usuario.cadastroUsuario();
+                                  builder: (context) => MenuPrincipal() //MenuPrincipalInstituicao(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
                                 ),
                               );
                             },

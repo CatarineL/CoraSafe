@@ -40,12 +40,12 @@ class Produtos extends StatelessWidget {
 
             SizedBox(
               width: double.infinity,
-              height: 70,
+              height: 60,
               child: ElevatedButton.icon(
                 onPressed: () async {
                   await abrirCamera();
                 },
-                label: Text("Ler Item", style: TextStyle(fontWeight: FontWeight.bold)),
+                label: Text("Ler Lista", style: TextStyle(fontWeight: FontWeight.bold)),
                 icon: Icon(Icons.document_scanner_sharp, size: 25,),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.redAccent[400],
@@ -58,11 +58,32 @@ class Produtos extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 5,),
+            SizedBox(
+              width: double.infinity,
+              height: 60,
+              child: ElevatedButton.icon(
+                onPressed: () async {
+                  await abrirCamera();
+                },
+                label: Text("Ler Item", style: TextStyle(fontWeight: FontWeight.bold)),
+                icon: Icon(Icons.view_in_ar, size: 25,),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.redAccent[400],
+                  foregroundColor: Colors.white,
+                  alignment: Alignment.center,
+                  iconAlignment: IconAlignment.end,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 15,),
             Divider(),
             SizedBox(
               width: 350,//double.infinity,
-              height: 75,
+              height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {
                    Navigator.push(
@@ -89,7 +110,7 @@ class Produtos extends StatelessWidget {
             ),
             SizedBox(
               width: 350,//double.infinity,
-              height: 75,
+              height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {
                    Navigator.push(
@@ -116,7 +137,7 @@ class Produtos extends StatelessWidget {
             ),
             SizedBox(
               width: 350,//double.infinity,
-              height: 75,
+              height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {
                   // Navigator.push(
@@ -143,7 +164,7 @@ class Produtos extends StatelessWidget {
             ),
             SizedBox(
               width: 350,//double.infinity,
-              height: 75,
+              height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {
                   // Navigator.push(

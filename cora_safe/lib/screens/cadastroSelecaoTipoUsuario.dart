@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 class CadastroSelecaoTipoUsuario extends StatelessWidget {
   CadastroSelecaoTipoUsuario({super.key});
 
-  bool sim = false, nao = false;
 
   @override
   Widget build(BuildContext context) {

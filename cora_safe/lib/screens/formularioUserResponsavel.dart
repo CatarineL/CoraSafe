@@ -1,14 +1,25 @@
-import 'package:cora_safe/screens/restricao.dart';
+import 'package:cora_safe/classes/UsuarioFamiliarProvider.dart';
+import 'package:cora_safe/screens/criarSenhaUserResponsavel.dart';
 import 'package:flutter/material.dart';
-
-import 'criarSenha.dart';
+import 'package:provider/provider.dart';
 
 
 class FormularioUserResponsavel extends StatelessWidget {
   FormularioUserResponsavel({super.key});
 
+  // //criando variaveis do formulario
+  // final TextEditingController nomeCompleto = TextEditingController();
+  // final TextEditingController dataNascimento = TextEditingController();
+  // final TextEditingController cpf = TextEditingController();
+  // final TextEditingController sexo = TextEditingController.fromValue(value);
+  // final TextEditingController emailPessoal = TextEditingController();
+  // final TextEditingController telefone = TextEditingController();
+  //
+  // static TextEditingValue? value;
+
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<UsuariofamiliarProvider>();
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(24),
@@ -17,6 +28,7 @@ class FormularioUserResponsavel extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.nome,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Nome completo:',
@@ -26,6 +38,7 @@ class FormularioUserResponsavel extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.dataNascimento,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Data de nascimento:',
@@ -35,6 +48,7 @@ class FormularioUserResponsavel extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.cpf,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'CPF:',
@@ -44,8 +58,6 @@ class FormularioUserResponsavel extends StatelessWidget {
             Row(
               //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
-
                 Expanded(
                   child: Text(
                     "Sexo:",
@@ -86,6 +98,7 @@ class FormularioUserResponsavel extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.emailFamiliar,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'E-mail pessoal:',
@@ -95,6 +108,7 @@ class FormularioUserResponsavel extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.telefone,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Telefone:',
@@ -110,7 +124,7 @@ class FormularioUserResponsavel extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => criarSenha(),
+                      builder: (context) => criarSenhaUserResponsavel(),
                     ),
                   );
                 },

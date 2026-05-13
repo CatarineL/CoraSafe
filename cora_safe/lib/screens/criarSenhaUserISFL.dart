@@ -1,13 +1,16 @@
+import 'package:cora_safe/classes/InstituicaoSFLProvider.dart';
 import 'package:flutter/material.dart';
-
 import 'login_screen.dart';
+import 'package:provider/provider.dart';
 
 
-class criarSenha extends StatelessWidget {
-  criarSenha({super.key});
+class criarSenhaUserISFL extends StatelessWidget {
+
+  criarSenhaUserISFL({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<InstituicaosflProvider>();
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(24),
@@ -16,6 +19,7 @@ class criarSenha extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.senha,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Criar senha:',
@@ -25,6 +29,8 @@ class criarSenha extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                //recebendo o valor recebido pelo usuario em controller
+                controller: controller.senha,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Confirmar senha:',
@@ -38,6 +44,7 @@ class criarSenha extends StatelessWidget {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
+                  controller.criarISFL();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

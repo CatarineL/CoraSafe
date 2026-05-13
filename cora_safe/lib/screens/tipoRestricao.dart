@@ -1,7 +1,6 @@
 import 'package:cora_safe/screens/menuPrincipalUserComum.dart';
 import 'package:flutter/material.dart';
-
-import 'criarSenha.dart';
+import 'criarSenhaUsuarioComum.dart';
 
 //void main() => runApp(const tipoRestricao());
 
@@ -103,7 +102,7 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => criarSenha(),
+                      builder: (context) => criarSenhaUsuarioComum(),
                     ),
                   );
                 },

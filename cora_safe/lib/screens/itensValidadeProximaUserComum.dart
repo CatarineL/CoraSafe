@@ -55,51 +55,19 @@ class itensValidadeProximaUserComum extends StatelessWidget {
             return ListTile(
               title: Text(item),
               onTap: () {
-                setState(() {
-                  controller.closeView(item);
-                });
+                // setState(() {
+                //   controller.closeView(item);
+                // });
               },
             );
           });
         },
       ),
+      ],
     ),
-    ),
-    );
-  }
-}
-            // SizedBox(height: 20,),
-            // Divider(),
-            // SizedBox(
-            //   width: double.infinity,
-            //   height: 40,
-            //   child: ElevatedButton.icon(
-            //     onPressed: () {
-            //       // Navigator.push(
-            //       //   context,
-            //       //   MaterialPageRoute(
-            //       //     builder: (context) => visualizacaoDispensaUserComum(),
-            //       //   ),
-            //       // );
-            //     },
-            //     icon: const Icon(Icons.edit),
-            //     //icon: const Icon(Icons.delete),
-            //     label: Text("FRUT MAMAO FORM PICFAT", style: TextStyle(fontWeight: FontWeight.bold)),
-            //     style: ElevatedButton.styleFrom(
-            //       backgroundColor: Colors.white,
-            //       foregroundColor: Colors.black,
-            //       alignment: Alignment.center,
-            //       iconAlignment: IconAlignment.end,
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(12),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-          ],
-        ),
       ),
     );
   }
 }
+
 

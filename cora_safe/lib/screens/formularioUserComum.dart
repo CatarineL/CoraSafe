@@ -1,12 +1,26 @@
+import 'package:cora_safe/classes/UsuarioProvider.dart';
 import 'package:cora_safe/screens/restricao.dart';
 import 'package:flutter/material.dart';
-
+//import 'package:http/http.dart' as context;
+import 'package:provider/provider.dart';
 
 class FormularioUser extends StatelessWidget {
   FormularioUser({super.key});
 
+  //criando variaveis do formulario
+  // final TextEditingController nomeCompleto = TextEditingController();
+  // final TextEditingController dataNascimento = TextEditingController();
+  // final TextEditingController cpf = TextEditingController();
+  // final TextEditingController sexo = TextEditingController.fromValue(value);
+  // final TextEditingController emailPessoal = TextEditingController();
+  // final TextEditingController emailFamiliar = TextEditingController();
+
+  // static TextEditingValue? value;
+
+
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<Usuarioprovider>();
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(24),
@@ -16,6 +30,7 @@ class FormularioUser extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.nomeUsuario,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Nome completo:',
@@ -25,6 +40,7 @@ class FormularioUser extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.dataNascimento,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Data de nascimento:',
@@ -34,6 +50,7 @@ class FormularioUser extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.cpf,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'CPF:',
@@ -43,8 +60,6 @@ class FormularioUser extends StatelessWidget {
             Row(
               //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
-
                 Expanded(
                   child: Text(
                     "Sexo:",
@@ -85,23 +100,25 @@ class FormularioUser extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.emailPessoal,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'E-mail pessoal:',
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'E-mail de familiar:',
-                ),
-              ),
-            ),
-
-            Spacer(),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            //   child: TextFormField(
+            //     controller: controller.emailFamiliar,
+            //     decoration: const InputDecoration(
+            //       border: UnderlineInputBorder(),
+            //       labelText: 'E-mail de familiar:',
+            //     ),
+            //   ),
+            // ),
+            //
+            // Spacer(),
 
             SizedBox(
               width: double.infinity,
