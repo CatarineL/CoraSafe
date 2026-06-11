@@ -1,26 +1,38 @@
 import 'package:cora_safe/classes/UsuarioProvider.dart';
 import 'package:cora_safe/screens/restricao.dart';
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 //import 'package:http/http.dart' as context;
 import 'package:provider/provider.dart';
 
 class FormularioUser extends StatelessWidget {
   FormularioUser({super.key});
 
-  //criando variaveis do formulario
-  // final TextEditingController nomeCompleto = TextEditingController();
-  // final TextEditingController dataNascimento = TextEditingController();
-  // final TextEditingController cpf = TextEditingController();
-  // final TextEditingController sexo = TextEditingController.fromValue(value);
-  // final TextEditingController emailPessoal = TextEditingController();
-  // final TextEditingController emailFamiliar = TextEditingController();
-
-  // static TextEditingValue? value;
-
-
   @override
   Widget build(BuildContext context) {
     final controller = context.read<Usuarioprovider>();
+
+
+
+    var mascaraDataNascimento = new MaskTextInputFormatter(
+        mask: '##/##/####',
+        filter: { "#": RegExp(r'[0-9]') },
+        type: MaskAutoCompletionType.lazy
+    );
+
+    var mascaraCPF = new MaskTextInputFormatter(
+        mask: '###.###.###-##',
+        filter: { "#": RegExp(r'[0-9]') },
+        type: MaskAutoCompletionType.lazy
+    );
+
+    var mascaraTelefone = new MaskTextInputFormatter(
+        mask: '(##) #####-####',
+        filter: { "#": RegExp(r'[0-9]') },
+        type: MaskAutoCompletionType.lazy
+    );
+
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(24),
@@ -40,6 +52,7 @@ class FormularioUser extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                inputFormatters: [mascaraDataNascimento],
                 controller: controller.dataNascimento,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -50,6 +63,17 @@ class FormularioUser extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                controller: controller.sexo,
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Sexo:',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextFormField(
+                inputFormatters: [mascaraCPF],
                 controller: controller.cpf,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -57,46 +81,45 @@ class FormularioUser extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Text(
-                    "Sexo:",
-                    //style: TextStyle(fontSize: 18),//fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-
-                // sim
-                Row(
-                  children: [
-                    const Text("Feminino"),
-                    Radio<String>(
-                      value: "feme",
-                      //groupValue: escolha,
-                      onChanged: (value) {
-                        //setState(() => escolha = value);
-                      },
-                    ),
-                  ],
-                ),
-
-                // não
-                Row(
-                  children: [
-                    const Text("Masculino"),
-                    Radio<String>(
-                      value: "masc",
-                      //groupValue: escolha,
-                      onChanged: (value) {
-                        //setState(() => escolha = value);
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Expanded(
+            //       child: Text(
+            //         "Sexo:",
+            //         //style: TextStyle(fontSize: 18),//fontWeight: FontWeight.bold),
+            //         overflow: TextOverflow.ellipsis,
+            //       ),
+            //     ),
+            //
+            //     // sim
+            //     Row(
+            //       children: [
+            //         const Text("Feminino"),
+            //         Radio<String>(
+            //           value: "feminino",
+            //           groupValue: controller.sexo,
+            //           onChanged: (value) {
+            //             setState(() => escolha = value);
+            //           },
+            //         ),
+            //       ],
+            //     ),
+            //
+            //     // não
+            //     Row(
+            //       children: [
+            //         const Text("Masculino"),
+            //         Radio<String>(
+            //           value: "masculino",
+            //           groupValue: escolha,
+            //           onChanged: (value) {
+            //             setState(() => escolha = value);
+            //           },
+            //         ),
+            //       ],
+            //     ),
+            //   ],
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
@@ -107,22 +130,32 @@ class FormularioUser extends StatelessWidget {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            //   child: TextFormField(
-            //     controller: controller.emailFamiliar,
-            //     decoration: const InputDecoration(
-            //       border: UnderlineInputBorder(),
-            //       labelText: 'E-mail de familiar:',
-            //     ),
-            //   ),
-            // ),
-            //
+            Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+               child: TextFormField(
+                 controller: controller.emailFamiliar,
+                 decoration: const InputDecoration(
+                   border: UnderlineInputBorder(),
+                   labelText: 'E-mail de familiar:',
+                 ),
+               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextFormField(
+                inputFormatters: [mascaraTelefone],
+                controller: controller.telefone,
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Telefone:',
+                ),
+              ),
+            ),
             // Spacer(),
-
+            Spacer(),
             SizedBox(
               width: double.infinity,
-              height: 55,
+              height: 45,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(

@@ -8,7 +8,7 @@ class InstituicaosflProvider extends ChangeNotifier{
   final nomeISFL = TextEditingController();
   final nomeResponsavel = TextEditingController();
   final cnpj = TextEditingController();
-  final tipoUsuario = TextEditingController();
+  String? tipoUsuario;
   final emailISFL = TextEditingController();
   final senha = TextEditingController();
   final telefoneISFL = TextEditingController();
@@ -18,7 +18,7 @@ class InstituicaosflProvider extends ChangeNotifier{
   String get nomeisfl => nomeISFL.text;
   String get nomeresponsavel => nomeResponsavel.text;
   String get CNPJ => cnpj.text;
-  String get tipousuario => tipoUsuario.text;
+  String get tipousuario => tipoUsuario ?? '';
   String get emailisfl => emailISFL.text;
   String get Senha => senha.text;
   String get telefoneisfl => telefoneISFL.text;
@@ -26,6 +26,7 @@ class InstituicaosflProvider extends ChangeNotifier{
 
 
   void criarISFL() async{
+    //print("teste de chamada de api");
     final url = Uri.parse('http://192.168.0.5:8000/ISFL');//http://10.0.2.2:8000/usuarios
 
     final response = await http.post(
@@ -36,11 +37,11 @@ class InstituicaosflProvider extends ChangeNotifier{
           "nomeISFL": nomeISFL.text,
           "nomeResponsavel": nomeResponsavel.text,
           "cnpj": cnpj.text,//int.parse(cpf.text),
-          "tipoUsuario": int.parse(tipoUsuario.text),
+          "tipoUsuario": tipoUsuario,
           "emailISFL": emailISFL.text,
           "telefoneISFL": telefoneISFL.text,
           "senha": senha.text,
-          "restricaoAlimentar": null,//tipoUsuario.text == "true" ? true : false,
+          "restricaoAlimentar": restricaoAlimentar.text,//tipoUsuario.text == "true" ? true : false,
         })
 
     );

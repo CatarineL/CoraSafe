@@ -1,6 +1,5 @@
 //classe de usuario provider
 import 'package:flutter/cupertino.dart';
-//import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -9,8 +8,9 @@ class Usuarioprovider  extends ChangeNotifier{
   final nomeUsuario = TextEditingController();
   final dataNascimento = TextEditingController();
   final cpf = TextEditingController();
-  final tipoUsuario = TextEditingController();
+  String? tipoUsuario;
   final emailPessoal = TextEditingController();
+  final emailFamiliar = TextEditingController();
   final senha = TextEditingController();
   final sexo = TextEditingController();
   final telefone = TextEditingController();
@@ -20,13 +20,16 @@ class Usuarioprovider  extends ChangeNotifier{
   String get nome => nomeUsuario.text;
   String get datanascimento => dataNascimento.text;
   String get CPF => cpf.text;
-  String get tipousuario => tipoUsuario.text;
+  String get tipousuario => tipoUsuario ?? '';
   String get emailpessoal => emailPessoal.text;
+  String get emailfamiliar => emailFamiliar.text;
   String get Senha => senha.text;
   String get Sexo => sexo.text;
   String get Telefone => telefone.text;
   String get Restricao => restricao.text;
 
+
+  //função de criação de usuário
   void criarUsuario() async{
     final url = Uri.parse('http://192.168.0.5:8000/usuarios');//http://10.0.2.2:8000/usuarios
 
@@ -40,18 +43,57 @@ class Usuarioprovider  extends ChangeNotifier{
           "cpfUsuario": cpf.text,//int.parse(cpf.text),
           "sexo": sexo.text,
           "emailUsuario": emailPessoal.text,
+          "emailFamiliar": emailFamiliar.text,
           "telefone": telefone.text,
           "senha": senha.text,
-          "restricaoAlimentar": null,//restricao.text == "true" ? true : false,
-          "tipoUsuario": null,//tipoUsuario.text == "true" ? true : false,
+          "restricaoAlimentar": restricao.text,
+          "tipoUsuario": tipoUsuario,//tipoUsuario.text == "true" ? true : false,
         })
 
     );
 
-    if (response.statusCode ==200 || response.statusCode == 201) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       print('usuario cadastrado');
     }else{
       print(response.body);
+    }
+  }
+
+  //função de login
+  void loginUsuario() async{
+    final url = Uri.parse('http://192.168.0.5:8000/loginUserComum');//http://10.0.2.2:8000/usuarios
+    Map<String, dynamic> saidaDados = {};
+
+    final response = await http.post(
+        url,
+        headers: {"Content-Type":"application/json"},
+        body: jsonEncode({
+          //"idUsuario": this.nomeUsuario,
+
+          "emailUsuario": emailPessoal.text,
+          "senha": senha.text,
+        })
+
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {//usuario encontrado
+
+      //criando um map para o resultado retornado pelo banco de dados
+      saidaDados = jsonDecode(response.body);
+
+      nomeUsuario.text = saidaDados['nomeUsuario'];
+      dataNascimento.text = saidaDados['dataNascimentoUsuario'];
+      cpf.text = saidaDados['cpfUsuario'];
+      sexo.text = saidaDados['sexo'];
+      emailPessoal.text = saidaDados['emailUsuario'];
+      emailFamiliar.text = saidaDados['emailFamiliar'];
+      telefone.text = saidaDados['telefone'];
+      senha.text = saidaDados['senha'];
+      restricao.text = saidaDados['restricaoAlimentar'];
+      tipoUsuario = saidaDados['tipoUsuario'];
+
+    }else{//usuario não encontrado
+
     }
   }
 }

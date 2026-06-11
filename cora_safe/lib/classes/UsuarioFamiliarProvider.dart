@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class UsuariofamiliarProvider  extends ChangeNotifier{
+class UsuariofamiliarProvider extends ChangeNotifier{
 
   final nome = TextEditingController();
   final dataNascimento = TextEditingController();
   final cpf = TextEditingController();
-  final tipoUsuario = TextEditingController();
+  String? tipoUsuario;
   final emailFamiliar = TextEditingController();
   final senha = TextEditingController();
   final sexo = TextEditingController();
@@ -18,7 +18,7 @@ class UsuariofamiliarProvider  extends ChangeNotifier{
   String get nomeFamiliar => nome.text;
   String get datanascimento => dataNascimento.text;
   String get CPF => cpf.text;
-  String get tipousuario => tipoUsuario.text;
+  String get tipousuario => tipoUsuario ?? '';
   String get emailfamiliar => emailFamiliar.text;
   String get Senha => senha.text;
   String get Sexo => sexo.text;
@@ -40,7 +40,7 @@ class UsuariofamiliarProvider  extends ChangeNotifier{
           "emailFamiliar": emailFamiliar.text,
           "telefone": telefone.text,
           "senha": senha.text,
-          "tipoUsuario": null,//tipoUsuario.text == "true" ? true : false,
+          "tipoUsuario": tipoUsuario,//tipoUsuario.text == "true" ? true : false,
         })
 
     );

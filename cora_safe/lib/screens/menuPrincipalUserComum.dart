@@ -10,8 +10,6 @@ import 'package:cora_safe/screens/raizeseasas.dart';
 import 'package:cora_safe/screens/sobre.dart';
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [Drawer].
-
 void main() => runApp(const MenuPrincipal());
 
 class MenuPrincipal extends StatelessWidget {
@@ -293,33 +291,6 @@ class _DrawerExampleState extends State<DrawerExample> {
                 )
                 //child: const Text('Prato do Dia'),
               ),
-              // ElevatedButton(
-              //   style: ElevatedButton.styleFrom(
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //   ),
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (context) => Doacoes(),
-              //       ),
-              //     );
-              //   },
-              //   child: Column(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Image.asset(
-              //         'assets/images/doacao-de-alimentos.png',
-              //         height: 60,
-              //       ),
-              //       const SizedBox(height: 8),
-              //       const Text('Doações', style: TextStyle(color: Colors.black)),
-              //     ],
-              //   )
-              //   //child: const Text('Doações'),
-              // ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -365,27 +336,6 @@ class _DrawerExampleState extends State<DrawerExample> {
 
           },
         ),
-        // const Padding(
-        //   padding: EdgeInsets.all(8.0),
-        //   child: Column(
-        //     children: <Widget>[
-        //       Card(
-        //         child: ListTile(
-        //           leading: Icon(Icons.notifications_sharp),
-        //           title: Text('Notificação 1'),
-        //           subtitle: Text('This is a notification'),
-        //         ),
-        //       ),
-        //       Card(
-        //         child: ListTile(
-        //           leading: Icon(Icons.notifications_sharp),
-        //           title: Text('Notificação 2'),
-        //           subtitle: Text('This is a notification'),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
 
         //pagina de notificações
         const Padding(
@@ -395,76 +345,21 @@ class _DrawerExampleState extends State<DrawerExample> {
               Card(
                 child: ListTile(
                   leading: Icon(Icons.notifications_sharp),
-                  title: Text('Notificação 1'),
-                  subtitle: Text('This is a notification'),
+                  title: Text('Produto com validade próxima'),
+                  subtitle: Text('Produto na dispensa em vencimento'),
                 ),
               ),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.notifications_sharp),
-                  title: Text('Notificação 2'),
-                  subtitle: Text('This is a notification'),
+                  title: Text('Prato do Dia'),
+                  subtitle: Text('Faça um filé de peixe grelhado com arroz'),
                 ),
               ),
             ],
           ),
         ),
 
-        // Página de perfil do usuario
-        //ListView.builder(
-          //reverse: true,
-          //itemCount: 2,
-          //itemBuilder: (BuildContext context, int index) {
-            //if (index == 0) {
-              //return Align(
-                //alignment: Alignment.centerRight,
-                //child: Container(
-                  //margin: const EdgeInsets.all(8.0),
-                  //padding: const EdgeInsets.all(8.0),
-                  //decoration: BoxDecoration(
-                    //color: theme.colorScheme.primary,
-                    //borderRadius: BorderRadius.circular(8.0),
-                  //),
-                  //child: Text(
-                    //'Hello',
-                    //style: theme.textTheme.bodyLarge!.copyWith(
-                      //color: theme.colorScheme.onPrimary,
-                    //),
-                  //),
-        //         ),
-        //       );
-        //     }
-        //     return Align(
-        //       alignment: Alignment.centerLeft,
-        //       child: Container(
-        //         margin: const EdgeInsets.all(8.0),
-        //         padding: const EdgeInsets.all(8.0),
-        //         decoration: BoxDecoration(
-        //           color: theme.colorScheme.primary,
-        //           borderRadius: BorderRadius.circular(8.0),
-        //         ),
-        //         child: Text(
-        //           'Hi!',
-        //           style: theme.textTheme.bodyLarge!.copyWith(
-        //             color: theme.colorScheme.onPrimary,
-        //           ),
-        //         ),
-        //       ),
-        //     );
-        //   },
-        // ),
-        // ListTile(
-        //   //leading: const Icon(Icons.account_circle),
-        //   //title: const Text('Perfil'),
-        //   onTap: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) => perfilUser(),
-        //       ),
-        //     );
-        //   },
-        // ),
       ][currentPageIndex],
 
       );

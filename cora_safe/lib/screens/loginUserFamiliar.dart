@@ -1,19 +1,24 @@
 import 'package:cora_safe/classes/Usuario.dart';
+import 'package:cora_safe/classes/UsuarioProvider.dart';
 import 'package:flutter/material.dart';
 import 'menuPrincipalInstituicao.dart';
 import 'menuPrincipalUserComum.dart';
 import 'menuPrincipalUserResponsavel.dart';
 //import 'package:cora_safe/classes/Usuario.dart'
+import 'package:provider/provider.dart';
 
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginUserFamiliar extends StatelessWidget {
+  LoginUserFamiliar({super.key});
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _senhaController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
+    var controller_userComum = context.read<Usuarioprovider>();
+
     return Scaffold(
         body: Container(
           color: Colors.redAccent[400],
@@ -40,8 +45,8 @@ class LoginScreen extends StatelessWidget {
                         TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
-                              hintText: "Email",
-                              //hintStyle:TextStyle(color: Colors.white)
+                            hintText: "Email",
+                            //hintStyle:TextStyle(color: Colors.white)
                           ),
                         ),
                         SizedBox(
@@ -51,8 +56,8 @@ class LoginScreen extends StatelessWidget {
                           obscureText: true,
                           controller: _senhaController,
                           decoration: InputDecoration(
-                              hintText: "Senha",
-                              //hintStyle:TextStyle(color: Colors.white)
+                            hintText: "Senha",
+                            //hintStyle:TextStyle(color: Colors.white)
                           ),
                         ),
                         SizedBox(
@@ -61,12 +66,14 @@ class LoginScreen extends StatelessWidget {
                         ElevatedButton(
                             onPressed: () {
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  //chamada da função
-                                  //usuario.cadastroUsuario();
-                                  builder: (context) => MenuPrincipal() //MenuPrincipalInstituicao(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
-                                ),
+                                  context,
+                                  //if
+                                  MaterialPageRoute(
+                                    //chamada da função
+                                    //usuario.cadastroUsuario();
+
+                                  builder: (context) => MenuPrincipalResponsavel() //MenuPrincipalInstituicao(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
+                                  ),
                               );
                             },
                             style: ElevatedButton.styleFrom(
@@ -102,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                         TextButton(
                           onPressed: () {},
                           style: TextButton.styleFrom(
-                            foregroundColor: Colors.black
+                              foregroundColor: Colors.black
                           ),
                           child: Text("Ainda não tem uma conta, crie agora"),
                         )

@@ -1,4 +1,4 @@
-import 'package:cora_safe/screens/login_screen.dart';
+import 'package:cora_safe/screens/loginUserComum.dart';
 import 'package:flutter/material.dart';
 
 import 'cadastroSelecaoTipoUsuario.dart';
@@ -37,7 +37,7 @@ class LoginCadastro extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
+                                builder: (context) => LoginUserComum(),
                               ),
                             );
                           },

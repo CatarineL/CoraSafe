@@ -43,8 +43,31 @@ class Produtos extends StatelessWidget {
               height: 60,
               child: ElevatedButton.icon(
                 onPressed: () async {
-                  await abrirCamera();
+                  await showDialog(
+                    //criando dialogo de alerta para que o usuário tire a foto com algumas restrições
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Dicas para uma boa captura'),
+                    content: const Text('Para uma boa qualidade de imagem, se atente as seguintes sugestões:\n 1) Tire a imagem em um lugar iluminado;\n 2) Tente enquadrar a imagem na vertical, no sentido da nota fiscal'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, "Cancelar"),
+                        child: Text("Cancelar"),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          Navigator.pop(context, "Entendi");
+                          await abrirCamera();
+                        }, child: Text("Entendi"),
+                      ),
+                    ],
+
+                    ),
+
+                  );
                 },
+
+
                 label: Text("Ler Lista", style: TextStyle(fontWeight: FontWeight.bold)),
                 icon: Icon(Icons.document_scanner_sharp, size: 25,),
                 style: ElevatedButton.styleFrom(
@@ -64,7 +87,27 @@ class Produtos extends StatelessWidget {
               height: 60,
               child: ElevatedButton.icon(
                 onPressed: () async {
-                  await abrirCamera();
+                  await showDialog(
+                    //criando dialogo de alerta para que o usuário tire a foto com algumas restrições
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: Text('Dicas para uma boa captura'),
+                      content: Text('Para uma boa qualidade de imagem, se atente as seguintes sugestões:\n 1) Tire a imagem em um lugar iluminado;\n 2) Tente enquadrar a imagem na vertical, no sentido da nota fiscal'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, "Cancelar"),
+                          child: Text("Cancelar"),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            Navigator.pop(context, "Entendi");
+                            await abrirCamera();
+                          }, child: Text("Entendi"),
+                        ),
+                      ],
+                    ),
+
+                  );
                 },
                 label: Text("Ler Item", style: TextStyle(fontWeight: FontWeight.bold)),
                 icon: Icon(Icons.view_in_ar, size: 25,),

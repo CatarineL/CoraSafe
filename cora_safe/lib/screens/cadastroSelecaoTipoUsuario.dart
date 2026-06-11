@@ -1,3 +1,7 @@
+import 'package:cora_safe/classes/InstituicaoSFLProvider.dart';
+import 'package:cora_safe/classes/UsuarioFamiliarProvider.dart';
+import 'package:cora_safe/classes/UsuarioProvider.dart';
+import 'package:provider/provider.dart';
 import 'formularioUserResponsavel.dart';
 import 'formularioUserComum.dart';
 import 'formularioUserInstituicao.dart';
@@ -7,9 +11,18 @@ import 'package:flutter/material.dart';
 class CadastroSelecaoTipoUsuario extends StatelessWidget {
   CadastroSelecaoTipoUsuario({super.key});
 
-
   @override
   Widget build(BuildContext context) {
+    var controller_userComum = context.read<Usuarioprovider>();
+    var controller_userFamiliar = context.read<UsuariofamiliarProvider>();
+    var controller_userISFl = context.read<InstituicaosflProvider>();
+
+    //variaveis temporarias
+    var pessoa60Mais = 'Idoso';
+    var pessoaResponsavel = 'Responsavel';
+    var instituicaoSFL = 'ISFL';
+
+
     return Scaffold(
         body: Padding(
             padding: const EdgeInsets.all(24),
@@ -25,6 +38,7 @@ class CadastroSelecaoTipoUsuario extends StatelessWidget {
                   height: 55,
                   child: ElevatedButton(
                     onPressed:(){
+                      controller_userComum.tipoUsuario = pessoa60Mais;
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -51,6 +65,7 @@ class CadastroSelecaoTipoUsuario extends StatelessWidget {
                   height: 55,
                   child: ElevatedButton(
                     onPressed:(){
+                      controller_userFamiliar.tipoUsuario = pessoaResponsavel;
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -77,6 +92,7 @@ class CadastroSelecaoTipoUsuario extends StatelessWidget {
                   height: 55,
                   child: ElevatedButton(
                     onPressed:(){
+                      controller_userISFl.tipoUsuario = instituicaoSFL;
                       Navigator.push(
                         context,
                         MaterialPageRoute(

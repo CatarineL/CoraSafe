@@ -1,6 +1,7 @@
 import 'package:cora_safe/classes/InstituicaoSFLProvider.dart';
 import 'package:cora_safe/screens/restricao.dart';
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'criarSenhaUserISFL.dart';
 
@@ -8,16 +9,24 @@ import 'criarSenhaUserISFL.dart';
 class FormularioUserInstituicao extends StatelessWidget {
   FormularioUserInstituicao({super.key});
 
-  // //criando variaveis do formulario
-  // final TextEditingController nomeInstitucional = TextEditingController();
-  // final TextEditingController nomeResponsavel = TextEditingController();
-  // final TextEditingController cnpj = TextEditingController();
-  // final TextEditingController telefoneInstitucional = TextEditingController();
-  // final TextEditingController emailInstitucional = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final controller = context.read<InstituicaosflProvider>();
+
+    var mascaraCNPJ = new MaskTextInputFormatter(
+        mask: '##.###.###/####-##',
+        filter: { "#": RegExp(r'[0-9,A-Z]') },
+        type: MaskAutoCompletionType.lazy
+    );
+
+    var mascaraTelefone = new MaskTextInputFormatter(
+        mask: '(##) ########',
+        filter: { "#": RegExp(r'[0-9]') },
+        type: MaskAutoCompletionType.lazy
+    );
+
+
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(24),
@@ -46,6 +55,7 @@ class FormularioUserInstituicao extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                inputFormatters: [mascaraCNPJ],
                 controller: controller.cnpj,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -56,6 +66,7 @@ class FormularioUserInstituicao extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                inputFormatters: [mascaraTelefone],
                 controller: controller.telefoneISFL,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),

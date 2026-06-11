@@ -23,11 +23,10 @@ class CheckboxListTileExample extends StatefulWidget {
 
 class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
   bool pressaoAlta = false;
-  bool checkboxValue2 = false;
-  bool checkboxValue3 = false;
-  bool checkboxValue4 = false;
-  bool checkboxValue5 = false;
-  bool checkboxValue6 = false;
+  bool diabetes = false;
+  bool osteoporose = false;
+  bool doencaOcular = false;
+  bool problemasRespiratorios = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +48,10 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
             ),
             const Divider(height: 0),
             CheckboxListTile(
-              value: checkboxValue2,
+              value: diabetes,
               onChanged: (bool? value) {
                 setState(() {
-                  checkboxValue2 = value!;
+                  diabetes = value!;
                 });
               },
               title: const Text('Diabetes'),
@@ -61,10 +60,10 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
 
             const Divider(height: 0),
             CheckboxListTile(
-              value: checkboxValue4,
+              value: osteoporose,
               onChanged: (bool? value) {
                 setState(() {
-                  checkboxValue4 = value!;
+                  osteoporose = value!;
                 });
               },
               title: const Text('Osteoporose'),
@@ -72,10 +71,10 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
             ),
             const Divider(height: 0),
             CheckboxListTile(
-              value: checkboxValue5,
+              value: doencaOcular,
               onChanged: (bool? value) {
                 setState(() {
-                  checkboxValue5 = value!;
+                  doencaOcular = value!;
                 });
               },
               title: const Text('Doença Ocular'),
@@ -83,10 +82,10 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
             ),
             const Divider(height: 0),
             CheckboxListTile(
-              value: checkboxValue6,
+              value: problemasRespiratorios,
               onChanged: (bool? value) {
                 setState(() {
-                  checkboxValue6 = value!;
+                  problemasRespiratorios = value!;
                 });
               },
               title: const Text('Problemas respiratórios'),

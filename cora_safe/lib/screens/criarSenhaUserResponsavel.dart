@@ -1,8 +1,9 @@
 import 'package:cora_safe/classes/UsuarioFamiliarProvider.dart';
+import 'package:cora_safe/screens/loginUserFamiliar.dart';
 import 'package:flutter/material.dart';
 import '../classes/Usuario.dart';
 import '../classes/UsuarioProvider.dart';
-import 'login_screen.dart';
+import 'loginUserComum.dart';
 import 'package:provider/provider.dart';
 
 
@@ -21,6 +22,7 @@ class criarSenhaUserResponsavel extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                obscureText: true,
                 controller: controller.senha,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -32,6 +34,7 @@ class criarSenhaUserResponsavel extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
                 //recebendo o valor recebido pelo usuario em controller
+                obscureText: true,
                 controller: controller.senha,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -50,7 +53,7 @@ class criarSenhaUserResponsavel extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
+                      builder: (context) => LoginUserFamiliar(),
                     ),
                   );
                 },

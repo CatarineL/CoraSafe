@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../classes/Usuario.dart';
 import '../classes/UsuarioProvider.dart';
-import 'login_screen.dart';
+import 'loginUserComum.dart';
 import 'package:provider/provider.dart';
 
 
@@ -12,6 +12,8 @@ class criarSenhaUsuarioComum extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.read<Usuarioprovider>();
+    final bool obscureText;
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(24),
@@ -20,6 +22,7 @@ class criarSenhaUsuarioComum extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
+                obscureText: true,
                 controller: controller.senha,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -31,6 +34,7 @@ class criarSenhaUsuarioComum extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
                 //recebendo o valor recebido pelo usuario em controller
+                obscureText: true,
                 controller: controller.senha,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -49,7 +53,7 @@ class criarSenhaUsuarioComum extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => LoginScreen(),
+                        builder: (context) => LoginUserComum(),
                     ),
                   );
                 },

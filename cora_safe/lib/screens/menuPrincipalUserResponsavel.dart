@@ -67,12 +67,12 @@ class _DrawerExampleState extends State<DrawerExample> {
             ),
             ListTile(
               leading: const Icon(Icons.add_shopping_cart),
-              title: const Text('Produtos'),
+              title: const Text('Produtos com validade próxima'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Produtos(),
+                    builder: (context) => Produtos(),//corrigir pagina
                   ),
                 );
                 setState(() {
@@ -82,7 +82,7 @@ class _DrawerExampleState extends State<DrawerExample> {
             ),
             ListTile(
               leading: const Icon(Icons.medication_outlined),
-              title: const Text('Medicamentos'),
+              title: const Text('Horário de Ingestão de Medicamentos'),//corrigir
               onTap: () {
                 Navigator.push(
                   context,
