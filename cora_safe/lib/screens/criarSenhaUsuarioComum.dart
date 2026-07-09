@@ -11,8 +11,10 @@ class criarSenhaUsuarioComum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<Usuarioprovider>();
+    final controllerUser = context.read<Usuarioprovider>();
     final bool obscureText;
+    TextEditingController confirmarSenha1 = TextEditingController();
+    TextEditingController confirmarSenha2 = TextEditingController();
 
     return Scaffold(
       body: Container(
@@ -23,7 +25,7 @@ class criarSenhaUsuarioComum extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
                 obscureText: true,
-                controller: controller.senha,
+                controller: confirmarSenha1,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Criar senha:',
@@ -35,7 +37,7 @@ class criarSenhaUsuarioComum extends StatelessWidget {
               child: TextFormField(
                 //recebendo o valor recebido pelo usuario em controller
                 obscureText: true,
-                controller: controller.senha,
+                controller: confirmarSenha2,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Confirmar senha:',
@@ -49,13 +51,18 @@ class criarSenhaUsuarioComum extends StatelessWidget {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
-                  controller.criarUsuario();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
+                  if (confirmarSenha1.text == confirmarSenha2.text){//verificando se as senhas são iguais
+                    controllerUser.senha.text = confirmarSenha2.text;
+                    controllerUser.criarUsuario();
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
                         builder: (context) => LoginUserComum(),
-                    ),
-                  );
+                      ),
+                    );
+                  }
+
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.redAccent[400],

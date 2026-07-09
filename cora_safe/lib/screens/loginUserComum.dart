@@ -1,10 +1,9 @@
 import 'package:cora_safe/classes/Usuario.dart';
 import 'package:cora_safe/classes/UsuarioProvider.dart';
+import 'package:cora_safe/screens/cadastroSelecaoTipoUsuario.dart';
+import 'package:cora_safe/screens/menuPrincipalUserComum.dart';
+import 'package:cora_safe/screens/tipoRestricaoUsuarioComum.dart';
 import 'package:flutter/material.dart';
-import 'menuPrincipalInstituicao.dart';
-import 'menuPrincipalUserComum.dart';
-import 'menuPrincipalUserResponsavel.dart';
-//import 'package:cora_safe/classes/Usuario.dart'
 import 'package:provider/provider.dart';
 
 
@@ -38,8 +37,8 @@ class LoginUserComum extends StatelessWidget {
                         //FlutterLogo(size: 76),
                         Image.asset(
                           'assets/images/CoraSafe_logo_removido.png',
-                          width: 300,
-                          height: 300,
+                          width: 150,
+                          height: 131,
                         ),
                         SizedBox(height: 16),
                         TextField(
@@ -64,17 +63,32 @@ class LoginUserComum extends StatelessWidget {
                           height: 16,
                         ),
                         ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                //if
-                                MaterialPageRoute(
-                                  //chamada da função
-                                  //usuario.cadastroUsuario();
 
-                                  builder: (context) => MenuPrincipal() //MenuPrincipalInstituicao(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
-                                ),
+                            onPressed: () async {
+                              if (!context.mounted) return;
+                              bool acesso = await controller_userComum.loginUsuario(
+                                  _emailController.text,
+                                  _senhaController.text,
                               );
+
+                              if (acesso) {
+                                Navigator.push(
+                                  context,
+                                  //if confirmar se a função de login deu retorno positivo
+                                  MaterialPageRoute(
+                                    //chamada da função
+                                    //usuario.cadastroUsuario();
+
+                                    builder: (context) => MenuPrincipal(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
+                                  ),
+                                );
+
+                              } else{
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text("E-mail ou senha inválidos")),
+                                );
+
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
@@ -92,7 +106,18 @@ class LoginUserComum extends StatelessWidget {
                           height: 16,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              //if
+                              MaterialPageRoute(
+                                //chamada da função
+                                //usuario.cadastroUsuario();
+
+                                  builder: (context) => CadastroSelecaoTipoUsuario() //MenuPrincipalInstituicao(),//MenuPrincipalResponsavel(),//MenuPrincipal(),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             foregroundColor: Colors.black,
@@ -102,17 +127,8 @@ class LoginUserComum extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                           ),
-                          child: Text("Entrar com google"),),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.black
-                          ),
-                          child: Text("Ainda não tem uma conta, crie agora"),
-                        )
+                          child: Text("Ainda não tem uma conta, crie agora"),),
+
                       ]
                   ),
                 ),

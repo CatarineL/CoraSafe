@@ -77,46 +77,6 @@ class FormularioUserResponsavel extends StatelessWidget {
                 ),
               ),
             ),
-            // Row(
-            //   //crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     Expanded(
-            //       child: Text(
-            //         "Sexo:",
-            //         //style: TextStyle(fontSize: 18),//fontWeight: FontWeight.bold),
-            //         overflow: TextOverflow.ellipsis,
-            //       ),
-            //     ),
-            //
-            //     // sim
-            //     Row(
-            //       children: [
-            //         const Text("Feminino"),
-            //         Radio<String>(
-            //           value: "feme",
-            //           //groupValue: escolha,
-            //           onChanged: (value) {
-            //             //setState(() => escolha = value);
-            //           },
-            //         ),
-            //       ],
-            //     ),
-            //
-            //     // não
-            //     Row(
-            //       children: [
-            //         const Text("Masculino"),
-            //         Radio<String>(
-            //           value: "masc",
-            //           //groupValue: escolha,
-            //           onChanged: (value) {
-            //             //setState(() => escolha = value);
-            //           },
-            //         ),
-            //       ],
-            //     ),
-            //   ],
-            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(

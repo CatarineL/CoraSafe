@@ -1,15 +1,17 @@
-import 'package:cora_safe/screens/menuPrincipalUserComum.dart';
+import 'package:cora_safe/classes/TipoRestricaoProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:provider/provider.dart';
 import 'criarSenhaUsuarioComum.dart';
 
 //void main() => runApp(const tipoRestricao());
 
-class tipoRestricao extends StatelessWidget {
-  const tipoRestricao({super.key});
+class tipoRestricaoUsuarioComum extends StatelessWidget {
+  const tipoRestricaoUsuarioComum({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: CheckboxListTileExample());
+    return const CheckboxListTileExample();
   }
 }
 
@@ -22,14 +24,28 @@ class CheckboxListTileExample extends StatefulWidget {
 }
 
 class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
+
+  //variaveis para controlar o botão de confirmaçõa de restrição
   bool pressaoAlta = false;
   bool diabetes = false;
   bool osteoporose = false;
   bool doencaOcular = false;
   bool problemasRespiratorios = false;
 
+
+  //variaveis pra controlar
+  var confirmaPressaoAlta = "Pressão Alta", confirmaDiabetes = "Diabetes", confirmaOsteoporose = "Osteoporose", confirmadoencaOcular = "Doença Ocular", confirmaProblemasRespiratorios = "Problemas Respiratórios";
+
+  //nessa tela o que deve acontecer:
+  //1) chamar um cursor da tabela de tipo restrição
+  //2) para cada uma das restrições apresentadas
+  //3) nome da restrição e enviar para a tabela de restrição junto com o id do usuario
+
   @override
   Widget build(BuildContext context) {
+  //cursor para a classe de Tipo Restrição
+  final controller = context.read<Tiporestricaoprovider>();
+
     return Scaffold(
       //appBar: AppBar(title: const Text('')),
       body: Container(
@@ -41,6 +57,7 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
               onChanged: (bool? value) {
                 setState(() {
                   pressaoAlta = value!;
+                  controller.nomeRestricao = confirmaPressaoAlta;
                 });
               },
               title: const Text('Pressão Alta'),
@@ -52,6 +69,8 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
               onChanged: (bool? value) {
                 setState(() {
                   diabetes = value!;
+                  //necessario ter uma variavel que vai receber o nome da restrição
+                  controller.nomeRestricao = confirmaDiabetes;
                 });
               },
               title: const Text('Diabetes'),
@@ -64,6 +83,8 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
               onChanged: (bool? value) {
                 setState(() {
                   osteoporose = value!;
+                  //necessario ter uma variavel que vai receber o nome da restrição
+                  controller.nomeRestricao = confirmaOsteoporose;
                 });
               },
               title: const Text('Osteoporose'),
@@ -75,6 +96,8 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
               onChanged: (bool? value) {
                 setState(() {
                   doencaOcular = value!;
+                  //necessario ter uma variavel que vai receber o nome da restrição
+                  controller.nomeRestricao = confirmadoencaOcular;
                 });
               },
               title: const Text('Doença Ocular'),
@@ -86,6 +109,8 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
               onChanged: (bool? value) {
                 setState(() {
                   problemasRespiratorios = value!;
+                  //necessario ter uma variavel que vai receber o nome da restrição
+                  controller.nomeRestricao = confirmaProblemasRespiratorios;
                 });
               },
               title: const Text('Problemas respiratórios'),
@@ -98,6 +123,7 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
+                  controller.criarRestricao();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -115,7 +141,7 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
                 child: const Text("Continuar"),
               ),
             ),
-            //const SizedBox(height: 12),
+
           ],
         ),
       ),

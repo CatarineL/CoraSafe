@@ -26,7 +26,7 @@ class UsuariofamiliarProvider extends ChangeNotifier{
 
 
   void criarUsuario() async{
-    final url = Uri.parse('http://192.168.0.5:8000/usuario_familiar');//http://10.0.2.2:8000/usuarios
+    final url = Uri.parse('http://192.168.0.5:8000/usuario_familiar');//ver sempre o ip da maquina local
 
     final response = await http.post(
         url,

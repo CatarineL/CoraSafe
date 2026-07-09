@@ -1,11 +1,13 @@
 import 'package:cora_safe/classes/InstituicaoSFLProvider.dart';
 import 'package:cora_safe/classes/ProdutoProvider.dart';
+import 'package:cora_safe/classes/TIpoRestricaoProvider.dart';
 import 'package:cora_safe/classes/UsuarioFamiliarProvider.dart';
 import 'package:cora_safe/screens/cadastroSelecaoTipoUsuario.dart';
 import 'package:cora_safe/screens/exemplomenu.dart';
 import 'package:cora_safe/screens/formularioUserComum.dart';
 import 'package:cora_safe/screens/formularioUserInstituicao.dart';
 import 'package:cora_safe/screens/formularioUserResponsavel.dart';
+import 'package:cora_safe/screens/loginUserComum.dart';
 import 'package:cora_safe/screens/menuPrincipalUserComum.dart';
 import 'package:cora_safe/screens/perfil.dart';
 import 'package:cora_safe/screens/restricao.dart';
@@ -22,7 +24,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => Usuarioprovider()),
         ChangeNotifierProvider(create: (_) => UsuariofamiliarProvider()),
         ChangeNotifierProvider(create: (_) => InstituicaosflProvider()),
-        ChangeNotifierProvider(create: (_) => Produtoprovider(idProduto: '', nomeProduto: '', dataValidade: null)),
+        ChangeNotifierProvider(create: (_) => Produtoprovider()),
+        ChangeNotifierProvider(create: (_) => Tiporestricaoprovider()),
       ],
       child: MyApp()
     ),
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: CadastroSelecaoTipoUsuario()//FormularioUser(),//FormularioUserResponsavel(),// FormularioUser()//CadastroSelecaoTipoUsuario()//LoginCadastro(), //perfilUser()////MenuPrincipal(),//Restricao()//FormularioUser(),//CadastroSelecaoTipoUsuario(),//LoginScreen()//LoginCadastro(),//chamando a tela de login a principio
+      home: LoginUserComum()//CadastroSelecaoTipoUsuario()//FormularioUser(),//FormularioUserResponsavel(),// FormularioUser()//CadastroSelecaoTipoUsuario()//LoginCadastro(), //perfilUser()////MenuPrincipal(),//Restricao()//FormularioUser(),//CadastroSelecaoTipoUsuario(),//LoginScreen()//LoginCadastro(),//chamando a tela de login a principio
 
     );
   }

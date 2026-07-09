@@ -1,4 +1,5 @@
 import 'package:cora_safe/classes/UsuarioProvider.dart';
+import 'package:cora_safe/screens/criarSenhaUsuarioComum.dart';
 import 'package:cora_safe/screens/restricao.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -81,45 +82,8 @@ class FormularioUser extends StatelessWidget {
                 ),
               ),
             ),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: Text(
-            //         "Sexo:",
-            //         //style: TextStyle(fontSize: 18),//fontWeight: FontWeight.bold),
-            //         overflow: TextOverflow.ellipsis,
-            //       ),
-            //     ),
-            //
-            //     // sim
-            //     Row(
-            //       children: [
-            //         const Text("Feminino"),
-            //         Radio<String>(
-            //           value: "feminino",
-            //           groupValue: controller.sexo,
-            //           onChanged: (value) {
-            //             setState(() => escolha = value);
-            //           },
-            //         ),
-            //       ],
-            //     ),
-            //
-            //     // não
-            //     Row(
-            //       children: [
-            //         const Text("Masculino"),
-            //         Radio<String>(
-            //           value: "masculino",
-            //           groupValue: escolha,
-            //           onChanged: (value) {
-            //             setState(() => escolha = value);
-            //           },
-            //         ),
-            //       ],
-            //     ),
-            //   ],
-            // ),
+
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(

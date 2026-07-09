@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 class Usuarioprovider  extends ChangeNotifier{
 
+  final idUsuario = TextEditingController();
   final nomeUsuario = TextEditingController();
   final dataNascimento = TextEditingController();
   final cpf = TextEditingController();
@@ -17,6 +18,7 @@ class Usuarioprovider  extends ChangeNotifier{
   final restricao = TextEditingController();
 
   //pegando os valores quando precisar
+  String get idusuario => idUsuario.text;
   String get nome => nomeUsuario.text;
   String get datanascimento => dataNascimento.text;
   String get CPF => cpf.text;
@@ -31,13 +33,13 @@ class Usuarioprovider  extends ChangeNotifier{
 
   //função de criação de usuário
   void criarUsuario() async{
-    final url = Uri.parse('http://192.168.0.5:8000/usuarios');//http://10.0.2.2:8000/usuarios
+    final url = Uri.parse('http://192.168.0.6:8000/usuarios');//http://10.0.2.2:8000/usuarios
 
     final response = await http.post(
         url,
         headers: {"Content-Type":"application/json"},
         body: jsonEncode({
-          //"idUsuario": this.nomeUsuario,
+          "idUsuario": idUsuario.text,
           "nomeUsuario": nomeUsuario.text,
           "dataNascimentoUsuario": dataNascimento.text,
           "cpfUsuario": cpf.text,//int.parse(cpf.text),
@@ -60,18 +62,18 @@ class Usuarioprovider  extends ChangeNotifier{
   }
 
   //função de login
-  void loginUsuario() async{
-    final url = Uri.parse('http://192.168.0.5:8000/loginUserComum');//http://10.0.2.2:8000/usuarios
+  Future<bool> loginUsuario(String email, String senha) async{
+    final url = Uri.parse('http://192.168.0.6:8000/loginUserComum');//http://10.0.2.2:8000/usuarios
     Map<String, dynamic> saidaDados = {};
 
     final response = await http.post(
         url,
         headers: {"Content-Type":"application/json"},
         body: jsonEncode({
-          //"idUsuario": this.nomeUsuario,
 
-          "emailUsuario": emailPessoal.text,
-          "senha": senha.text,
+          "emailUsuario": email,
+          "senha": senha,
+
         })
 
     );
@@ -82,18 +84,15 @@ class Usuarioprovider  extends ChangeNotifier{
       saidaDados = jsonDecode(response.body);
 
       nomeUsuario.text = saidaDados['nomeUsuario'];
-      dataNascimento.text = saidaDados['dataNascimentoUsuario'];
-      cpf.text = saidaDados['cpfUsuario'];
-      sexo.text = saidaDados['sexo'];
       emailPessoal.text = saidaDados['emailUsuario'];
-      emailFamiliar.text = saidaDados['emailFamiliar'];
       telefone.text = saidaDados['telefone'];
-      senha.text = saidaDados['senha'];
-      restricao.text = saidaDados['restricaoAlimentar'];
-      tipoUsuario = saidaDados['tipoUsuario'];
+      dataNascimento.text = saidaDados['dataNascimentoUsuario'];
+      emailFamiliar.text = saidaDados['emailFamiliar'];
 
+      return true;
     }else{//usuario não encontrado
-
+      print('usuario não encontrado');
+      return false;
     }
   }
 }

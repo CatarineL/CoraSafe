@@ -20,7 +20,7 @@ class edicaoDadosUserPrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meus dados",
+        title: Text("Atualizar Dados Pessoais",
             style: TextStyle(color: Colors.white, fontSize: 18)),
         backgroundColor: Colors.redAccent[400],
         iconTheme: IconThemeData(color: Colors.white),

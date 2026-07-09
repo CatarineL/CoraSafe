@@ -1,9 +1,11 @@
-import 'package:cora_safe/classes/ProdutoProvider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
+//import 'package:cora_safe/classes/ProdutoProvider.dart';
+//import 'package:flutter/material.dart';
+//import 'package:provider/provider.dart';
+//import 'package:http/http.dart';
+//import 'dart:convert';
 
+
+/*
 class visualizacaoDispensaUserComum extends StatelessWidget {
   visualizacaoDispensaUserComum({super.key});
 
@@ -26,6 +28,14 @@ class visualizacaoDispensaUserComum extends StatelessWidget {
       padding: EdgeInsets.all(24),
       child: Column(
         children: [
+        Text(
+          'Nome: ${controller.nomeProduto}',
+          textAlign: TextAlign.justify,
+          style: TextStyle(color: Colors.black, fontSize: 15),
+        ),
+        SizedBox(height: 50,),
+        Divider(),
+        /*
         Expanded(
           //versão anterior
           /*child: ListView.separated(
@@ -72,6 +82,7 @@ class visualizacaoDispensaUserComum extends StatelessWidget {
       },
         separatorBuilder: (BuildContext context, int index) => const Divider(),
       ),*/
+
             child: FutureBuilder(
               future: controller.lendoItens(),
               builder: (context, snapshot) {
@@ -96,7 +107,9 @@ class visualizacaoDispensaUserComum extends StatelessWidget {
                     return SizedBox(
                       width: double.infinity,
                       child: ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+
+                        },
                         icon: const Icon(Icons.edit),
                         label: Text(
                           controller.produtos[index].nomeProduto,
@@ -111,7 +124,8 @@ class visualizacaoDispensaUserComum extends StatelessWidget {
                 );
               },
             ),
-          ),
+          ),*/
+      Spacer(),
       SizedBox(
         width: double.infinity,
         height: 30,
@@ -141,5 +155,58 @@ class visualizacaoDispensaUserComum extends StatelessWidget {
       ),
     );
 
+  }
+}
+
+ */
+
+import 'package:cora_safe/classes/ProdutoProvider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:cora_safe/classes/UsuarioProvider.dart';
+
+class visualizacaoDispensaUserComum extends StatefulWidget {
+  const visualizacaoDispensaUserComum({super.key});
+
+  @override
+  State<visualizacaoDispensaUserComum> createState() =>
+      _visualizacaoDispensaUserComumState();
+}
+
+class _visualizacaoDispensaUserComumState
+    extends State<visualizacaoDispensaUserComum> {
+
+  @override
+  void initState() {
+    super.initState();
+    //listen: false porque estamos fora do build, só disparando a ação
+    final idUsuario = Provider.of<Usuarioprovider>(context, listen: false).idUsuario;
+    Provider.of<Produtoprovider>(context, listen: false).lendoItens(idUsuario as String);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = context.watch<Produtoprovider>();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Dispensa Atual", style: TextStyle(color: Colors.white, fontSize: 18)),
+        backgroundColor: Colors.black26,
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: ListView.builder(
+          itemCount: controller.produtos.length,
+          itemBuilder: (context, index) {
+            final produto = controller.produtos[index];
+            return Text(
+              'Nome: ${produto.nomeProduto} - Validade: ${produto.validadeProduto}',
+              style: const TextStyle(color: Colors.black, fontSize: 15),
+            );
+          },
+        ),
+      ),
+    );
   }
 }

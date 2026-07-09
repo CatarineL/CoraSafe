@@ -1,6 +1,4 @@
 import 'package:cora_safe/screens/ajuda.dart';
-import 'package:cora_safe/screens/dispensa.dart';
-import 'package:cora_safe/screens/doacoes.dart';
 import 'package:cora_safe/screens/medicamentos.dart';
 import 'package:cora_safe/screens/paineleconomia.dart';
 import 'package:cora_safe/screens/perfil.dart';
@@ -8,7 +6,11 @@ import 'package:cora_safe/screens/pratodia.dart';
 import 'package:cora_safe/screens/produtos.dart';
 import 'package:cora_safe/screens/raizeseasas.dart';
 import 'package:cora_safe/screens/sobre.dart';
+import 'package:cora_safe/screens/tipoRestricaoUsuarioComum.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../classes/UsuarioProvider.dart';
 
 void main() => runApp(const MenuPrincipal());
 
@@ -17,10 +19,7 @@ class MenuPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DrawerExample(),
-    );
+    return const DrawerExample();
   }
 }
 
@@ -38,6 +37,8 @@ class _DrawerExampleState extends State<DrawerExample> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+
+
     return Scaffold(
       appBar: AppBar(title: const Text('')),
       drawer: Drawer(
@@ -96,21 +97,22 @@ class _DrawerExampleState extends State<DrawerExample> {
                 });
               },
             ),
-            // ListTile(
-            //   leading: const Icon(Icons.volunteer_activism),
-            //   title: const Text('Doações'),
-            //   onTap: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => Doacoes(),
-            //       ),
-            //     );
-            //     setState(() {
-            //       selectedPage = 'Doações';
-            //     });
-            //   },
-            // ),
+            ListTile(
+              leading: const Icon(Icons.no_food),
+              title: const Text('Restrição Alimentar'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => tipoRestricaoUsuarioComum(),
+                  ),
+                );
+                setState(() {
+                  selectedPage = 'Restrição Alimentar';
+                });
+              },
+            ),
+
             ListTile(
               leading: const Icon(Icons.eco),
               title: const Text('Raízes e Asas'),
