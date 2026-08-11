@@ -83,6 +83,7 @@ class Usuarioprovider  extends ChangeNotifier{
       //criando um map para o resultado retornado pelo banco de dados
       saidaDados = jsonDecode(response.body);
 
+      idUsuario.text = saidaDados['idUsuario'].toString();
       nomeUsuario.text = saidaDados['nomeUsuario'];
       emailPessoal.text = saidaDados['emailUsuario'];
       telefone.text = saidaDados['telefone'];

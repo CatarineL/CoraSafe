@@ -1,16 +1,53 @@
 //classe provider
 import 'dart:core';
-import 'package:cora_safe/screens/visualizarDispensaUserComum.dart';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Produto.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Produtoprovider extends ChangeNotifier {
   List<Produto> produtos = [];
 
-  //de alguma forma tenho que passar o id da pessoa logada para a função de criar item
 
+  //enviando a imagem para a api
+  Future<void> enviandoImagem(XFile imagem) async {
+    final url = Uri.parse('http://192.168.0.6:8002/selecao_imagem');
+    var request = http.MultipartRequest('POST', url)
+      ..files.add(await http.MultipartFile.fromPath('imagem', imagem.path));
+    var response = await request.send();
+
+    if (response.statusCode == 200){
+      print('Imagem enviada para a API');
+    }
+
+  }
+
+
+  //+ adicionarProduto() : void
+  Future<void> adicionarProduto(XFile imagem, String idUsuario_fk) async {//Produto produto
+    final url = Uri.parse('http://192.168.0.6:8002/criar_produto');
+    print('Enviando requisição...');
+
+    final request = http.MultipartRequest('POST', url);
+
+    request.fields['idUsuario_fk'] = idUsuario_fk;
+
+    request.files.add(
+      await http.MultipartFile.fromPath('imagem', imagem.path),
+    );
+
+    final streamedResponse = await request.send();
+    final response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      print('produto cadastrado');
+    } else {
+      print(response.body);
+    }
+  }
+
+  //*****de alguma forma tenho que passar o id da pessoa logada para a função de criar item*****
   Future<List<Produto>> lendoItens(String idUsuarioComum) async {
     final url = Uri.parse(
       'http://192.168.0.6:8002/visualizandoProdutos',
@@ -21,16 +58,18 @@ class Produtoprovider extends ChangeNotifier {
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({"idUsuario_fk": idUsuarioComum}),
     );
-
+    //print('Enviando idUsuario_fk: "$idUsuarioComum"');
     if (response.statusCode == 200 || response.statusCode == 201) {
       //usuario encontrado
 
-      //criando um map para o resultado retornado pelo banco de dados
+      //criando uma lista dinamica para o resultado retornado pelo banco de dados
       List<dynamic> saidaDados = jsonDecode(utf8.decode(response.bodyBytes));
+
+      print('Resposta da API: ${response.body}');
 
       produtos = saidaDados.map((item) {
         return Produto(
-          idProduto: item["idProduto"] ?? '',
+          idProduto: item["idProduto"].toString(),
           idUsuario_fk: item["idUsuario_fk"],
           idISFL_fk: item["idISFL_fk"],
           nomeProduto: item["nomeProduto"] ?? '',
@@ -47,21 +86,50 @@ class Produtoprovider extends ChangeNotifier {
     }
   }
 
-  //metodos da classe
-  //+ adicionarProduto() : void
-  void adicionarProduto() {}
-
   //+ editarProduto() : void
-  void editarProduto() {}
+  //void editarProduto() {}
+  Future<void> editarProduto(String idProduto, String nomeProduto, String validadeProduto) async {
+    final url = Uri.parse(
+      'http://192.168.0.6:8002/atualizando_produtos/$idProduto',
+    );
 
-  //+ vizualizarProduto() : void
-  void vizualizarProduto() {}
+    final response = await http.put(
+      url,
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "nomeProduto": nomeProduto,
+        "validadeProduto": validadeProduto,
+      }),
+    );
 
-  //+ visualizarDispensaAtual() : void
-  void visualizarDispensaAtual() {}
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      print('produto atualizado');
+    } else {
+      print(response.body);
+    }
+
+  }
+
 
   //+ excluirProduto() : void
-  void excluirProduto() {}
+  //void excluirProduto() {}
+  Future<void> excluirProduto(String idProduto) async {
+    final url = Uri.parse(
+      'http://192.168.0.6:8002/excluindoProdutos/$idProduto',
+    );
+
+    final response = await http.delete(
+      url,
+      headers: {"Content-Type": "application/json"},
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      print('produto excluído');
+    } else {
+      print(response.body);
+    }
+
+  }
 
   //+ produtoValidadeProxima() : void- produtoFrequente() : void
   void produtoValidadeProxima() {}
@@ -80,63 +148,5 @@ class Produtoprovider extends ChangeNotifier {
 
   //+ compartilharRelatorio() : void
   void compartilharRelatorio() {}
-  /*
-  String? idProduto;
-  String? idUsuario_fk;
-  String? idISFL_fk;
-  String nomeProduto;
-  String? validadeProduto;
-  List<Produtoprovider> produtos = [];
 
-  //pegando os valores quando precisar
-  String get idproduto => idProduto ?? '';
-  String get idusuario_fk => idUsuario_fk  ?? '';
-  String get idisfl_fk => idISFL_fk  ?? '';
-  String get nomeproduto => nomeProduto;
-  String get validadeproduto => validadeProduto ?? '';
-
-  Produtoprovider({
-    required this.idProduto,
-    this.idUsuario_fk,
-    this.idISFL_fk,
-    required this.nomeProduto,
-    this.validadeProduto
-  });
-
-  factory Produtoprovider.fromJson(Map<String, dynamic> json) {
-    return Produtoprovider(
-      idProduto: json['idProduto'],
-      idUsuario_fk: json['idUsuario_fk'],
-      idISFL_fk: json['idISFL_fk'],
-      nomeProduto: json['nomeProduto'],
-      validadeProduto: json['dataValidade'],
-    );
-  }
-
-  Future<List<Produtoprovider>> lendoItens() async{
-    final url = Uri.parse('http://192.168.0.4:8002/produtos_identificados');
-
-    final retorno = await  http.get(url);
-    if (retorno.statusCode ==200){
-      //Map<String, dynamic> objeto = jsonDecode(retorno.body);
-
-
-      List<dynamic> dados = jsonDecode(utf8.decode(retorno.bodyBytes));
-
-      produtos = dados
-          .map((item) => Produtoprovider.fromJson(item))
-          .toList();
-
-      notifyListeners();
-      print("Entrou em lendoItens()");
-      print(retorno.statusCode);
-      print(retorno.body);
-      return produtos;
-    }
-    else{
-      throw Exception('Erro ao carregar produtos');
-    }
-  }
-
-*/
 }

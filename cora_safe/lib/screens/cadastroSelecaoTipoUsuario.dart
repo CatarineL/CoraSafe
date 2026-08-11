@@ -2,9 +2,9 @@ import 'package:cora_safe/classes/InstituicaoSFLProvider.dart';
 import 'package:cora_safe/classes/UsuarioFamiliarProvider.dart';
 import 'package:cora_safe/classes/UsuarioProvider.dart';
 import 'package:provider/provider.dart';
-import 'formularioUserResponsavel.dart';
-import 'formularioUserComum.dart';
-import 'formularioUserInstituicao.dart';
+import 'package:cora_safe/screens/usuarioFamiliarResponsavel/formularioUserResponsavel.dart';
+import 'package:cora_safe/screens/usuarioComumIdoso/formularioUserComum.dart';
+import 'package:cora_safe/screens/usuarioIsflAsilo/formularioUserInstituicao.dart';
 import 'package:flutter/material.dart';
 
 

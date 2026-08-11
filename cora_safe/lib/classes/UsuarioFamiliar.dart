@@ -1,6 +1,6 @@
 //classe UsuarioFamiliar/Responsavel - essa classe representa pessoas
 //que são responsaveis pelo idoso de algum modo
-import 'package:cora_safe/classes/Usuario.dart';
+//import 'package:cora_safe/classes/Usuario.dart';
 
 // class Usuariofamiliar extends Usuario {
 //   //final String tipoUsuario;

@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 
-class IdosoProvider extends ChangeNotifier{
+//class IdosoProvider extends ChangeNotifier{
   
 
-}
+//}

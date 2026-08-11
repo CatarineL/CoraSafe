@@ -1,7 +1,6 @@
 //criação da classe produto
 import 'dart:core';
-import 'package:flutter/cupertino.dart';
-import 'dart:convert';
+
 
 class Produto{
 

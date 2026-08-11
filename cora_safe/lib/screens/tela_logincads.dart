@@ -1,4 +1,4 @@
-import 'package:cora_safe/screens/loginUserComum.dart';
+import 'package:cora_safe/screens/usuarioComumIdoso/loginUserComum.dart';
 import 'package:flutter/material.dart';
 
 import 'cadastroSelecaoTipoUsuario.dart';
